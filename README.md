@@ -14,23 +14,26 @@
 
 ## 安装
 
-SDK 尚未发布到 Maven Central。生态 Spring Boot 项目可用 **本地 path / 安装到本地仓库** 引用。
+Maven 坐标（发布到 Maven Central 后可直接引用；发布前请先 `mvn clean install`）：
+
+```xml
+<dependency>
+  <groupId>io.github.763606865</groupId>
+  <artifactId>zc-center-spring-boot-sdk</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
 ### 安装到本地 Maven 仓库
 
 ```bash
-cd sdk/springboot
 mvn clean install -DskipTests
 ```
 
-生态项目 `pom.xml`：
+发布到 Maven Central（需本机已配置 `~/.m2/settings.xml` 中的 `central` Token，并激活 GPG）：
 
-```xml
-<dependency>
-  <groupId>com.zccenter</groupId>
-  <artifactId>zc-center-spring-boot-sdk</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-</dependency>
+```bash
+mvn clean deploy -P release
 ```
 
 ### 或使用系统 Path（多模块 / 相对路径）
@@ -189,7 +192,6 @@ ClassroomApi classroom = center.api(ClassroomApi.class);
 ## 本地测试
 
 ```bash
-cd sdk/springboot
 mvn test
 ```
 
