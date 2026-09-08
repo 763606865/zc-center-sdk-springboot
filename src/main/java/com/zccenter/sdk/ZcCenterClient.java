@@ -3,6 +3,7 @@ package com.zccenter.sdk;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zccenter.sdk.api.AbstractApi;
 import com.zccenter.sdk.api.AuthApi;
+import com.zccenter.sdk.api.DictApi;
 import com.zccenter.sdk.api.EnterpriseApi;
 import com.zccenter.sdk.api.PingApi;
 import com.zccenter.sdk.api.QuestionApi;
@@ -132,6 +133,10 @@ public final class ZcCenterClient {
 
     public EnterpriseApi enterprise() {
         return api(EnterpriseApi.class);
+    }
+
+    public DictApi dict() {
+        return api(DictApi.class);
     }
 
     public QuestionApi question() {

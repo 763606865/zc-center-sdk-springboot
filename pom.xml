@@ -7,7 +7,7 @@
     <!-- groupId 必须落在已验证 namespace：io.github.763606865 -->
     <groupId>io.github.763606865</groupId>
     <artifactId>zc-center-spring-boot-sdk</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>jar</packaging>
 
     <name>ZC Center Spring Boot SDK</name>

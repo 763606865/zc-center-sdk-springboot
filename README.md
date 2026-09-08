@@ -141,6 +141,18 @@ center.enterprise().addMember(Map.of(
 ));
 ```
 
+### 数据字典增量拉取
+
+```java
+center.dict().types();
+center.dict().items(Map.of("type_code", "education", "limit", 100));
+Map<String, Object> page = center.dict().master(Map.of(
+    "kind", "area",
+    "limit", 100
+)).getDataAsMap();
+// 下一批：latest_code = page.get("next_code")
+```
+
 ### 题库 / 题目
 
 ```java
