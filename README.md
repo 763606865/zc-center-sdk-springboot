@@ -161,6 +161,13 @@ center.question().search(Map.of("keyword", "导数", "page", 1));
 center.question().detail(questionUuid, false);
 ```
 
+题库增量拉取首次传空 `last_uuid`，后续传响应的 `next_uuid`：
+
+```java
+center.questionBank().list(Map.of("last_uuid", "", "page_size", 100));
+center.examNotice().list(Map.of("last_uuid", "", "limit", 100));
+```
+
 题目上报需开启 `report-enabled`：
 
 ```java
