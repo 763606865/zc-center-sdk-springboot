@@ -9,6 +9,7 @@ import com.zccenter.sdk.api.ExamNoticeApi;
 import com.zccenter.sdk.api.PingApi;
 import com.zccenter.sdk.api.QuestionApi;
 import com.zccenter.sdk.api.QuestionBankApi;
+import com.zccenter.sdk.api.ResumeApi;
 import com.zccenter.sdk.api.UserApi;
 import com.zccenter.sdk.exception.ApiException;
 import com.zccenter.sdk.exception.SapiException;
@@ -138,6 +139,10 @@ public final class ZcCenterClient {
 
     public ExamNoticeApi examNotice() {
         return api(ExamNoticeApi.class);
+    }
+
+    public ResumeApi resume() {
+        return api(ResumeApi.class);
     }
 
     public DictApi dict() {
