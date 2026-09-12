@@ -6,6 +6,8 @@ import com.zccenter.sdk.api.AuthApi;
 import com.zccenter.sdk.api.DictApi;
 import com.zccenter.sdk.api.EnterpriseApi;
 import com.zccenter.sdk.api.ExamNoticeApi;
+import com.zccenter.sdk.api.JobApi;
+import com.zccenter.sdk.api.JobBankApi;
 import com.zccenter.sdk.api.PingApi;
 import com.zccenter.sdk.api.QuestionApi;
 import com.zccenter.sdk.api.QuestionBankApi;
@@ -143,6 +145,14 @@ public final class ZcCenterClient {
 
     public ResumeApi resume() {
         return api(ResumeApi.class);
+    }
+
+    public JobApi job() {
+        return api(JobApi.class);
+    }
+
+    public JobBankApi jobBank() {
+        return api(JobBankApi.class);
     }
 
     public DictApi dict() {

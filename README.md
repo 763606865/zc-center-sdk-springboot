@@ -182,6 +182,24 @@ center.question().report(Map.of(
 ));
 ```
 
+### 职位库 / 职位
+
+```java
+center.jobBank().list(Map.of("page", 1, "page_size", 20));
+center.job().list(Map.of("updated_after", 0, "last_id", 0, "limit", 100));
+center.job().report(Map.of(
+    "bank_code", "default_center",
+    "company_credit_code", "91110000MA01234567",
+    "code", "JD-001",
+    "title", "后端工程师",
+    "employment_type", 1,
+    "status", 1
+));
+center.job().update(Map.of("uuid", jobUuid, "status", 2, "remark", "协助暂停"));
+```
+
+完整规则见中台 `docs/sapi/职位.md`。
+
 ### 自定义接口
 
 ```java
