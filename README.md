@@ -165,7 +165,36 @@ center.question().detail(questionUuid, false);
 
 ```java
 center.questionBank().list(Map.of("last_uuid", "", "page_size", 100));
-center.examNotice().list(Map.of("last_uuid", "", "limit", 100));
+center.examNotice().list(Map.of(
+    "last_uuid", "",
+    "limit", 100,
+    "exam_year", 2026
+));
+```
+
+### 招考公告 / 岗位
+
+公告与岗位分开同步。内嵌 `positions` 时 SDK 会自动拆批；大规模岗位请循环 `examPosition().reportBatch(uuid, items, syncIndex)`，每批最多 100 条，最后一批 `syncIndex=true`。
+
+```java
+Map<String, Object> reported = center.examNotice().report(Map.of(
+    "title", "某省公务员考试录用公告",
+    "collect_source", "某省公务员局",
+    "exam_year", 2026,
+    "recruit_count", 50000
+)).getDataAsMap();
+String noticeUuid = String.valueOf(((Map<?, ?>) reported.get("notice")).get("uuid"));
+
+center.examPosition().reportBatch(noticeUuid, List.of(
+    Map.of("name", "综合管理岗", "code", "119919101", "recruit_count", 1)
+), true);
+
+center.examPosition().list(Map.of(
+    "notice_uuid", noticeUuid,
+    "updated_after", 0,
+    "last_id", 0,
+    "limit", 100
+));
 ```
 
 题目上报需开启 `report-enabled`：
