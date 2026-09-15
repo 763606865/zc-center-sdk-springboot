@@ -26,6 +26,11 @@ public class EnterpriseApi extends AbstractApi {
         return post("/sapi/enterprise/report", payload);
     }
 
+    /** 按企业 UUID、信用代码或企业编码获取详情。 */
+    public SapiResponse detail(Map<String, Object> payload) {
+        return post("/sapi/enterprise/detail", payload);
+    }
+
     /**
      * 加入职工。
      */

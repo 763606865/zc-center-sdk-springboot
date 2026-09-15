@@ -20,7 +20,7 @@ Maven 坐标（发布到 Maven Central 后可直接引用；发布前请先 `mvn
 <dependency>
   <groupId>io.github.763606865</groupId>
   <artifactId>zc-center-spring-boot-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.11</version>
 </dependency>
 ```
 
@@ -134,12 +134,33 @@ Map<String, Object> reported = center.enterprise().report(Map.of(
     "admin_mobile", "13800138000"
 )).getDataAsMap();
 
+center.enterprise().detail(Map.of("credit_code", "91110000MA01234567"));
+
 center.enterprise().addMember(Map.of(
     "enterprise_uuid", ((Map<?,?>) reported.get("enterprise")).get("uuid"),
     "mobile", "13900139000",
     "role", EnterpriseApi.ROLE_MEMBER
 ));
 ```
+
+### 组织上报与详情
+
+```java
+import com.zccenter.sdk.api.OrganizationApi;
+
+Map<String, Object> reportedOrganization = center.organization().report(Map.of(
+    "external_id", "school-10001",
+    "name", "示例职业技术学校",
+    "primary_type", OrganizationApi.TYPE_SCHOOL,
+    "area_code", "110101"
+)).getDataAsMap();
+
+@SuppressWarnings("unchecked")
+Map<String, Object> organization = (Map<String, Object>) reportedOrganization.get("organization");
+center.organization().detail(Map.of("organization_uuid", organization.get("uuid")));
+```
+
+企业无需先调用组织接口，`enterprise().report()` 会自动建立组织主体。
 
 ### 数据字典增量拉取
 

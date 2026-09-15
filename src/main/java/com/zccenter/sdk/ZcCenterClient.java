@@ -9,6 +9,7 @@ import com.zccenter.sdk.api.ExamNoticeApi;
 import com.zccenter.sdk.api.ExamPositionApi;
 import com.zccenter.sdk.api.JobApi;
 import com.zccenter.sdk.api.JobBankApi;
+import com.zccenter.sdk.api.OrganizationApi;
 import com.zccenter.sdk.api.PingApi;
 import com.zccenter.sdk.api.QuestionApi;
 import com.zccenter.sdk.api.QuestionBankApi;
@@ -138,6 +139,10 @@ public final class ZcCenterClient {
 
     public EnterpriseApi enterprise() {
         return api(EnterpriseApi.class);
+    }
+
+    public OrganizationApi organization() {
+        return api(OrganizationApi.class);
     }
 
     public ExamNoticeApi examNotice() {
